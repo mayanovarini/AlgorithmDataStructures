@@ -4,6 +4,9 @@
 
 #All we have to keep in mind if key is less or more than the middle
 
+
+#Binary Search Done Recursively
+
 #Runtime O(logn)
 #Space O(logn) - because it consumes memory on the stack. Problem will arise for extremely large data sets, e.g when a recursive function runs on a system with a limited stack capacity.
 
