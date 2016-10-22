@@ -9,6 +9,10 @@
 #Find the sum of two values in an unsorted array and return True if there are two integers that sum up to the given key
 
 #The key is 11
+--------------------------------------
+
+# Runtime O(n)
+# Space O(n)
 
 def find_sum_of_two(array, key):
 	found = [] #store every number visited in a list
@@ -16,7 +20,7 @@ def find_sum_of_two(array, key):
 		if key - i in found:
 			return True
 		found.append(i)
-		
+
 	return False
 
 #test it
@@ -24,3 +28,37 @@ def find_sum_of_two(array, key):
 array = [3,5,8,1,13,9,2,7]
 key = 11
 print(find_sum_of_two(array, key))
+
+--------------------------------------
+
+# Now the princess finds another array, but this time is sorted. Yay. You should Yay too because the solution here is more efficient.
+
+# Runtime O(nLogn)
+# Space O(1)
+
+def find_two_sorted(array2, key2):
+	i = 0 # iterator from the left side
+	j = len(array2)-1 #iterator from the right side
+
+	while i < j:
+		sum = array2[i] + array2[j]
+		if sum == key2:
+			return True
+
+		#Because the array is sorted, we could treat the given key just like a check/middle point
+		#whenever the sum is less than the key, screw that useless number and moving onto the next node on its right by increment i
+		if sum < key2:
+			i += 1
+
+		#whenever the sum is bigger than the key, screw that useless number and moving onto the node on its left by decrement j
+		else:
+			j -= 1
+
+	return False #woop, the numbers are not found
+
+# test it
+
+array2 = [7, 19, 20, 33, 38, 40, 47]
+key2 = 40
+
+print(find_two_sorted(array2, key2))
