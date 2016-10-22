@@ -1,0 +1,46 @@
+def mergeSort(array):
+	print("splitting", array)
+	if len(array) > 1:
+		mid = len(array) // 2 #index
+		left = array[:mid]
+		right = array[mid:]
+
+		mergeSort(left)
+		mergeSort(right)
+		#keep splitting into halves until last number
+
+		#create an iterator for each side and the new merged array called K
+		i = 0
+		j = 0
+		k = 0
+
+		while i < len(left) and j < len(right): #this means, the number to sort exists on both sides
+			if left[i]<right[j]:
+				array[k] = left[i]
+				i+=1
+
+			else:
+				array[k] = right[j]
+				j+=1
+
+			k+=1 #first slot for merged array is taken, move on to the next None
+
+		#now, after one of the two compared nodes taken into the mergedsort, leaving only one number left, take that lonely number into the array of the mergedsort. One side that has 1 length means that the number has gone into the merged sort. One side that still 0 will be run under one of the following while statement:
+
+		while i < len(left): #that means, left was bigger than right and left is the lonely number
+			array[k] = left[i]
+			i+=1
+			k+=1 #another spot on an unsorted array is taken, move on to the next one
+
+		while j < len(right): #that means right is the lonely number, bigger than left
+			array[k] = right[j]
+			j+=1
+			k+=1
+
+	print ("merging", array)
+
+#test it 
+
+array = [54,23,44,67,87,3,666,73,12]
+mergeSort(array)
+print(array)
