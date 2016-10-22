@@ -1,0 +1,37 @@
+#Binary Search
+#We divide the array by half at ever step, hence logarithmic complexity.
+#Say we have 256 items in the array. How many times do we have to divide the array? Chances are less than 8 times since log(256) = 8.
+
+#All we have to keep in mind if key is less or more than the middle
+
+#Runtime O(logn)
+#Space O(logn) - because it consumes memory on the stack. Problem will arise for extremely large data sets, e.g when a recursive function runs on a system with a limited stack capacity.
+
+
+
+def binary_search_recursive(array, key, low, high):
+	if low > high:
+		return -1
+
+	middle = low + ((high - low) // 2) #index of the middle
+
+	if array[middle] == key:
+		return middle
+
+	# this is when recursion happens
+
+	elif key < array[middle]: #discard numbers bigger than middle
+		return binary_search_recursive(array, key, low, middle - 1) #calling the function itself
+
+	else: #that means, key > array[middle], discard numbers smaller than middle
+		return binary_search_recursive(array, key, middle + 1, high) #calling the function itself
+
+def binary_search(array, key):
+	return binary_search_recursive(array, key, 0, len(array)-1)
+
+# test it baby!
+
+array = [1,4,6,9,15,18,19,20]
+key = 19
+
+print(binary_search(array, key))
