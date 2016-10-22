@@ -1,5 +1,5 @@
 #Binary Search
-#We divide the array by half at ever step, hence logarithmic complexity.
+#We divide the array by half at every step, hence logarithmic complexity.
 #Say we have 256 items in the array. How many times do we have to divide the array? Chances are less than 8 times since log(256) = 8.
 
 #All we have to keep in mind if key is less or more than the middle
