@@ -1,0 +1,26 @@
+#Sum of Two Values
+
+#Once upon a time, there is an array that contains bunch of numbers. The princes wants to know if the sum of two integers in the array is equal to the given number she has in her mind.
+
+#Write the algorithm to read her mind.
+#Just kidding.
+
+
+#Find the sum of two values in an unsorted array and return True if there are two integers that sum up to the given key
+
+#The key is 11
+
+def find_sum_of_two(array, key):
+	found = [] #store every number visited in a list
+	for i in array:
+		if key - i in found:
+			return True
+		found.append(i)
+		
+	return False
+
+#test it
+
+array = [3,5,8,1,13,9,2,7]
+key = 11
+print(find_sum_of_two(array, key))
