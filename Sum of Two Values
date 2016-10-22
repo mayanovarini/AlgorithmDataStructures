@@ -31,7 +31,7 @@ print(find_sum_of_two(array, key))
 
 --------------------------------------
 
-# Now the princess finds another array, but this time is sorted. Yay. You should Yay too because the solution here is more efficient.
+# Now the princess finds another array, but this time is sorted. Yay. You should Yay too because the solution here is more efficient, space wise.
 
 # Runtime O(nLogn)
 # Space O(1)
