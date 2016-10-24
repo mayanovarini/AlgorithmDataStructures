@@ -43,8 +43,7 @@ def partition(array, low, high): #this function will be called to find the pivot
 
 	#Now, we found that splitting point. We need to swap the old pivot_value we the new one which is located at the right mark index.
 
-	array[low] = array[j]
-	array[j] = pivot_value
+	array[low], array[j] = array[j], array[low]
 
 	return j #this is the index of our pivot value, this is the SUPERSTAR of our partition
 
