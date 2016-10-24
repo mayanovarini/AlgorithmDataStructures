@@ -1,0 +1,18 @@
+#Bubble Sort
+#Runtime complexity O(n^2)
+#Space complexity O(1)
+
+def bubbleSort(array):
+	for passnum in range(len(array)-1, 0, -1): #this means, starting from the last index of the array length, counting backwards until 0
+		for i in range(passnum):
+			if array[i] > array[i+1]:
+				temp = array[i]
+				array[i] = array[i+1]
+				array[i+1] = temp
+
+
+#test it
+
+array = [2,5,12,9,15,8]
+bubbleSort(array)
+print(array)
