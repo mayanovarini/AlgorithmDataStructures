@@ -1,0 +1,20 @@
+#Insertion sort
+#Runtime complexity is O(N^2)
+#Space complexity is O(1)
+
+def insertionSort(array):
+	for index in range (1, len(array)):
+		currentValue = array[index] #array[position], which starts from array[1] or the right part of the pair
+		position = index #1,2,3...
+
+		while position > 0 and array[position-1] > currentValue: #number on the right is bigger than the left side, need to swap them
+			array[position] = array[position-1] #fill the slot on the right for the bigger number
+			position -=1 #to open the access to the slot for smaller number
+
+		array[position] = currentValue #fill the open slot on the left for the smaller number
+
+#test it
+
+array = [4,7,2,5,9,1]
+insertionSort(array)
+print(array)
