@@ -16,3 +16,33 @@ def bubbleSort(array):
 array = [2,5,12,9,15,8]
 bubbleSort(array)
 print(array)
+
+-------------------------------------
+
+#Bubble Sort (Optimized)
+#Runtime complexity is O(n) with this more optimized algorithm
+#Space complexity O(1)
+
+def swap(array, x, y):
+		temp = array[x]
+		array[x] = array[y]
+		array[y] = temp
+
+def bubbleSort(array):
+	swapped = True
+	for passnum in range(len(array)-1, 0, -1): #this means, starting from the last index of the array length, counting backwards until 0
+		if swapped != True: #if nothing to swap anymore, better stop here
+			return
+
+		for i in range(passnum):
+			if array[i] > array[i+1]:
+				swap(array, i, (i+1))
+				swapped = True
+
+
+
+#test it
+
+array = [2,5,12,9,15,8]
+bubbleSort(array)
+print(array)
