@@ -1,0 +1,70 @@
+#Quicksort
+#Runtime O(nlogn) and could be O(n^2) when you're not lucky
+#Space O(logn)
+
+#Step : Create a partition - Recursively call the quicksort helper to sort both of the left and right parts separately.
+
+#We use pivot value, for this I will use the first number on the first index.
+#Numbers on left side of pivot value should be smaller. When this is true, move on to the next element by incrementing the number.
+#Numbers on right side of pivot value should be bigger. When this is true, move on to the number to its left by decrementing it.
+
+#When the left mark is bigger than the pivot value and the right mark is small than the pivot value. SWAP THEM.
+
+#When leftmark > right mark, stop the while loop. When the left mark passes the right mark, whichever number in between them is the split point.
+#Now, the split point should be the new pivot value.
+#Swap the new pivot value with the split point, as a way to make it the actual pivot value.
+
+#----
+
+#Let's do the partition
+
+#rules : value of left mark should be lesser than pivot value, and value of right mark should be bigger.
+
+def partition(array, low, high): #this function will be called to find the pivot value at right mark index
+
+	pivot_value = array[low] #the value at the first index
+	i = low #index
+	j = high #index
+
+	while i < j: #while the spliting point has not been found
+		while array[i] <= pivot_value and i <= j:
+			i += 1
+		while array[j] >= pivot_value and j >= i:
+			j -=1
+		#when the number of left mark can not be incremented anymore for being more than the pivot_value, and the number on right mark can not be decremented anymore either for being smaller than the pivot_value, do the swapping as below:
+
+		if i < j: #this basically just means, that we haven't found the splitting point but left mark has not yet bigger than the right mark. But the values should be exchanged in order to move on.
+
+			array[i], array[j] = array[j], array[i]
+
+		else:
+
+			break #that means we found the splitting point
+
+	#Now, we found that splitting point. We need to swap the old pivot_value we the new one which is located at the right mark index.
+
+	array[low] = array[j]
+	array[j] = pivot_value
+
+	return j #this is the index of our pivot value, this is the SUPERSTAR of our partition
+
+
+#helper, recurisively dividing and conquering
+
+def quick_sort_rec(array, low, high):
+	if high > low:
+		pivot_value = partition(array, low, high)
+		quick_sort_rec(array, low, pivot_value-1)
+		quick_sort_rec(array, pivot_value+1, high)
+
+#quicksort in action!
+def quicksort(array):
+	quick_sort_rec(array, 0, len(array)-1)
+
+#test it!
+
+array = [7,5,13,16,3,29,33,1,4]
+quicksort(array)
+print(array)
+
+	
