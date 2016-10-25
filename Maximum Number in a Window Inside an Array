@@ -1,0 +1,16 @@
+#The maximum number in a window of 3 integers
+#Given a large array of integers and a window of size 'w',
+#Find the current maximum in the window as the window slides through the entire array.
+
+#Runtime O(n)
+#Space O(window)
+
+def find(array, size):
+	window = []
+	for i in range(0, len(array)-size + 1):
+		window.append(max(array[i:i+size]))
+	print(window)
+
+#test it
+find([-5,3,1,-1,2,7],3)
+#Output 3,3,2,7
