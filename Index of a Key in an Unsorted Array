@@ -1,0 +1,44 @@
+#Find the index of a given key in the unsorted array
+#Solution is using binary search
+#Runtime O(logn)
+#Space O(logn)
+
+def binarySearch(array, low, high, key):
+	#assuming all the numbers in the array are unique
+
+	if low > high: #that means we have exhausted the searching and no key is found
+		return -1
+
+	mid = low + ((high - low) // 2)
+
+	if array[mid] == key:
+		return mid #found the key
+
+	# if the key is between first index and middle index
+	if array[low] < array[mid] and key < array[mid] and key >= array[low]:
+		return binarySearch(array, low, mid-1, key)
+
+	# if the key is between middle index and last index
+	elif array[mid] < array[high] and key > array[mid] and key <= array[high]:
+		return binarySearch(array, mid+1, high, key)
+
+	# if the number on the last index is found to be bigger than the number on the middle, discard the numbers from the middle point and on
+	elif array[low] > array[mid]:
+		return binarySearch(array, low, mid-1, key)
+
+	# if the number on the middle is found to be bigger than the number on the last index, discard the numbers to the left of middle point
+	elif array[mid] > array[high]:
+		return binarySearch(array, mid+1, high, key)
+
+	return -1 # we couldn't find the key
+
+def findKey(array, key):
+	return binarySearch(array, 0, len(array)-1, key)
+
+#test it
+
+array = [5,7,2,4,9,14,11,30,75,32]
+key = 14
+print(findKey(array, key))
+
+	
