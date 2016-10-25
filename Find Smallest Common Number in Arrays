@@ -1,0 +1,36 @@
+#Find smallest common number in all sorted arrays
+
+#Runtime O(N)
+#Space O(1)
+
+def find_least_common_number(a,b,c):
+	i=0
+	j=0
+	k=0
+
+	while i < len(a) and j < len(b) and k < len(c):
+
+	# Found the smallest common number
+		if a[i] == b[j] and b[j] == c[k]:
+		  return a[i]
+
+		# Let's advance the iterator
+		# for the smallest value.
+
+		if a[i] <= b[j] and a[i] <= c[k]:
+		  i+=1
+		elif b[j] <= a[i] and b[j] <= c[k]:
+		  j+=1
+		elif c[k] <= a[i] and c[k] <= b[j]:
+		  k+=1
+
+	return -1
+
+
+#test it
+
+a = [3,4,6,7,8,9,12,16,20]
+b = [1,7,8,9,10,12,23]
+c = [1,2,3,4,6,9,12,15,18]
+
+print(find_least_common_number(a,b,c))
