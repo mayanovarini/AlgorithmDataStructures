@@ -1,0 +1,19 @@
+#Checking if a word reads the same backward and forward.
+
+def isPalindrome(string):
+	leftIndex = 0
+	rightIndex = len(string)-1
+
+	while rightIndex >= leftIndex:
+		if not string[leftIndex] == string[rightIndex]:
+			return False
+
+		leftIndex += 1 #move on to the next letter on its right
+		rightIndex -= 1 #move on to the next letter on its left
+
+	return True
+
+
+#test it
+
+print(isPalindrome("maya"))
